@@ -28,49 +28,49 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a href="../website/index.html">
+                        <a href="../docs/index.html">
                             <i class="now-ui-icons files_paper"></i>
                             <p>Introduction</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/basic_geometry.html">
+                        <a href="../docs/basic_geometry.html">
                             <i class="now-ui-icons design_app"></i>
                             <p>Basic Geometry</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/banks.html">
+                        <a href="../docs/banks.html">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Banks and Sets</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/spline.html">
+                        <a href="../docs/spline.html">
                             <i class="now-ui-icons education_atom"></i>
                             <p>Spline Nodes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/meshInstances.html">
+                        <a href="../docs/meshInstances.html">
                             <i class="now-ui-icons design_vector"></i>
                             <p>Mesh and Instances</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="../website/mesh.html">
+                    <li class="active">
+                        <a href="../docs/mesh.html">
                             <i class="now-ui-icons design-2_ruler-pencil"></i>
                             <p>Mesh Generator</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/scene.html">
+                        <a href="../docs/scene.html">
                             <i class="now-ui-icons ui-1_settings-gear-63"></i>
                             <p>Scene parameters</p>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="../website/consolidate.html">
+                    <li>
+                        <a href="../docs/consolidate.html">
                             <i class="now-ui-icons travel_info"></i>
                             <p>Consolidating vs. Merging</p>
                         </a>
@@ -102,13 +102,36 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="title">Consolidating vs. Merging</h5>
+                                <h5 class="title">Mesh Generators</h5>
                             </div>
                             <div class="card-body">
-                              <p>Each time a user adds a polyline or a face to mesh via the user interface, he/she needs to press the consolidate button in order to integrate it permanently into the mesh.</p>
-                              <p>User needs to press on the merge button before subdividing or offsetting a mesh. The merge button links all the faces, vertices, and edges together from the mesh.</p>
+                              <h3>Tunnel</h3>
+                              <h6>NOME Definition</h6>
+                              <p>A tunnel statement generates a cylindrical surface that can be modeled by the inner part of a torus.</p>
+                              <p><code> tunnel id (n ro ratio h) endtunnel </code></p>
+                              <p>The n, ro, ratio, and h parameters of a tunnel are numbers that need to be separated by space.</p>
+                              <h6>Example</h6>
+                              <p><code>tunnel t1 (1 2 3 1) endtunnel</code></p>
+                              <p>Defines a tunnel named t1 with parameters n=1, ro=2, ratio=3, and h=1.</p>
+                              
+                              <h3>Funnel</h3>
+                              <h6>NOME Definition</h6>
+                              <p>A funnel statement generates a border curve that is constrained to be circular. They can be obtained by truncating a cone.</p>
+                              <p><code>funnel id (n ro ratio h) endfunnel</code></p>
+                              <p>The n, ro, ratio, and h parameters of a funnel are numbers that need to be separated by space.</p>
+                              <h6>Example</h6>
+                              <p><code>funnel f1 (1 2 3 1) endfunnel</code></p>
+                              <p>Defines a funnel named f1 with parameters n=1, ro=2, ratio=3, and h=1.</p>
+                              
+                              <h3>Circle</h3>
+                              <h6>NOME Definition</h6>
+                              <p>A circle statement generates a set of edges and vertices forming a circle given a radius and a number of slices.</p>
+                              <p><code>circle id (num radius) endcircle</code></p>
+                              <p>The num, and radius parameters of a circle are numbers that need to be separated by space.</p>
+                              <h6>Example</h6>
+                              <p><code>circle c1 (5 10) endcircle</code></p>
+                              <p>Defines a circle named c1 with parameters num=5, and radius=10.</p>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

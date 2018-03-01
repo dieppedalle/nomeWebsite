@@ -27,50 +27,50 @@
             
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active">
-                        <a href="../website/index.html">
+                    <li>
+                        <a href="../docs/index.html">
                             <i class="now-ui-icons files_paper"></i>
                             <p>Introduction</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/basic_geometry.html">
+                        <a href="../docs/basic_geometry.html">
                             <i class="now-ui-icons design_app"></i>
                             <p>Basic Geometry</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/banks.html">
+                        <a href="../docs/banks.html">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Banks and Sets</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="../website/spline.html">
+                    <li class="active">
+                        <a href="../docs/spline.html">
                             <i class="now-ui-icons education_atom"></i>
                             <p>Spline Nodes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/meshInstances.html">
+                        <a href="../docs/meshInstances.html">
                             <i class="now-ui-icons design_vector"></i>
                             <p>Mesh and Instances</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/mesh.html">
+                        <a href="../docs/mesh.html">
                             <i class="now-ui-icons design-2_ruler-pencil"></i>
                             <p>Mesh Generator</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/scene.html">
+                        <a href="../docs/scene.html">
                             <i class="now-ui-icons ui-1_settings-gear-63"></i>
                             <p>Scene parameters</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../website/consolidate.html">
+                        <a href="../docs/consolidate.html">
                             <i class="now-ui-icons travel_info"></i>
                             <p>Consolidating vs. Merging</p>
                         </a>
@@ -102,27 +102,24 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="title">NOME Language Specification</h5>
-                                <p class="category">Predecessor <a href="https://people.eecs.berkeley.edu/~ug/slide/docs/slide/spec/">SLIDE</a></p>
-                            </div>
-                            <div class="card-body">
-                              <h5>Downloading NOME</h5>
-                              NOME is currently avaiable on Windows and macOS:
-                              <ul>
-                                <li><a href="https://drive.google.com/file/d/1H3yJqoQZPCD3mw5IJJHiNrVfM2qTsZ2Y/view?usp=sharing">macOS</a></li>
-                                <li><a href="https://drive.google.com/file/d/1BWpH66RQi9YiIw5IPgW24mqqFsc65xQL/view?usp=sharing">Windows</a></li>
-                              </ul>
-                              
-                              <h5>Development NOME</h5>
-                              <p>
-                              Link to the code:
-                              <a href="https://github.com/dieppedalle/nome">https://github.com/dieppedalle/nome</a>
-                              </p>
-                              
-                              <p>
-                              .sif to .nom converter that can be used to import sif files to NOME:
-                              <a href="https://github.com/dieppedalle/sifToNomConverter">https://github.com/dieppedalle/sifToNomConverter</a>
-                              </p>
+                                <h5 class="title">Spline Nodes</h5>
+                                <h3>BSpline</h3>
+                                <h6>NOME Definition</h6>
+                                <p>A bspline statement is used to define a curve that approximates a list of control points. </p>
+                                <p><code>bspline{order} id ( point_idlist ) closed endbspline{order} </code></p>
+                                <p>The point_idlist defines a list of control points. The closed parameter defines whether or not a curve is closed.</p>
+                                <h6>Example</h6>
+                                <p><code>bspline3 bsp  (p0 p1 p2 p3 p4 p5 p6) endbspline3</code></p>
+                                <p>Defines a bspline bsp with order 3 and with control points p0, p1, p2, p3, p4, p5, and p6.</p>
+                                
+                                <h3>Bezier Curve</h3>
+                                <h6>NOME Definition</h6>
+                                <p>A bezier curve statement is used to define a curve that interpolates the end points and approximates the rest of the points from a list of control points. </p>
+                                <p><code>beziercurve id ( point_idlist ) slices numSlices endbeziercurve</code></p>
+                                <p>The point_idlist defines a list of control points. The numSlices parameter defines the number of slices in the bezier curve.</p>
+                                <h6>Example</h6>
+                                <p><code>beziercurve bz  (p0 p1 p2 p3 p4 p5 p6) slices 10 endbeziercurve</code></p>
+                                <p>Defines a bezier curve bz with 10 slices and with control points p0, p1, p2, p3, p4, p5, and p6.</p>
                             </div>
                         </div>
                     </div>
