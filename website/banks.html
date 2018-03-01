@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>NOME Language Specification</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="orange">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+            
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="../website/index.html">
+                            <i class="now-ui-icons files_paper"></i>
+                            <p>Introduction</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../website/basic_geometry.html">
+                            <i class="now-ui-icons design_app"></i>
+                            <p>Basic Geometry</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../website/banks.html">
+                            <i class="now-ui-icons design_bullet-list-67"></i>
+                            <p>Banks and Sets</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../website/spline.html">
+                            <i class="now-ui-icons education_atom"></i>
+                            <p>Spline Nodes</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../website/meshInstances.html">
+                            <i class="now-ui-icons design_vector"></i>
+                            <p>Mesh and Instances</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../website/mesh.html">
+                            <i class="now-ui-icons design-2_ruler-pencil"></i>
+                            <p>Mesh Generator</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../website/scene.html">
+                            <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                            <p>Scene parameters</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../website/consolidate.html">
+                            <i class="now-ui-icons travel_info"></i>
+                            <p>Consolidating vs. Merging</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#pablo">NOME Language Specification</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-sm">
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">Banks and Sets</h5>
+                                <h3>Banks and Sets</h3>
+                                <h6>NOME Definition</h6>
+                                <p>A bank statement is used to set values that can be dynamically set through sliders once the NOME file has been compiled. Each bank will be a separate window in Nome with a list of sliders. A slider in a bank can be created by creating a set then specifying the name, value, start, end, and step size of the slider. The value of a bank can then be passed in to a generator call with the syntax {expr $id_setId} where id is the id of the bank and setId is the id of the variable to be assigned.</p>
+                                <p><code> bank id
+  set 	setId1 value1 start1 end1 stepSize1
+  ...
+  set 	setIdN valueN startN endN stepSizeN 
+endbank </code></p>
+                                <p>Each setId must be a string representing the name of the variable to be changed. value represents the initial value of the slider. start represents the minimum value of the slider. end represents the maximum value of the slider. stepSize represents by how much the slider must increment.</p>
+                                <h6>Example</h6>
+                                <p><code>bank lefttunP
+  set 	n   	8   	3   	10  	1
+  set 	ro  	0.3 	0.1 	1.0 	0.1
+  set 	ratio   0.2	-0.5	0.5 	0.1
+  set 	h   	0.1 	0.1 	1.5 	0.1
+endbank</code></p>
+                                <p>Defines a bank named lefttunP with variable n, ro, ratio, and h. The first variable in the bank can be assigned to a generator using {expr $lefttunP_n}. For example, a point can be created using:</p>
+                                <p><code>point p1 (0 0 {expr $lefttunP_n}) endpoint</code></p>
+                                <p>where the variable n would be assigned to the slider controlling the z-position of p1.</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="../assets/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/now-ui-dashboard.js?v=1.0.1"></script>
+<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/demo/demo.js"></script>
+
+</html>
