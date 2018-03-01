@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>NOME Language Specification</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -12,10 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <link href="assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -28,49 +28,49 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a href="../docs/index.html">
+                        <a href="index.html">
                             <i class="now-ui-icons files_paper"></i>
                             <p>Introduction</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/basic_geometry.html">
+                        <a href="basic_geometry.html">
                             <i class="now-ui-icons design_app"></i>
                             <p>Basic Geometry</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/banks.html">
+                        <a href="banks.html">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Banks and Sets</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/spline.html">
+                        <a href="spline.html">
                             <i class="now-ui-icons education_atom"></i>
                             <p>Spline Nodes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/meshInstances.html">
+                        <a href="meshInstances.html">
                             <i class="now-ui-icons design_vector"></i>
                             <p>Mesh and Instances</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/mesh.html">
+                        <a href="mesh.html">
                             <i class="now-ui-icons design-2_ruler-pencil"></i>
                             <p>Mesh Generator</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="../docs/scene.html">
+                    <li class="active">
+                        <a href="scene.html">
                             <i class="now-ui-icons ui-1_settings-gear-63"></i>
                             <p>Scene parameters</p>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="../docs/consolidate.html">
+                    <li>
+                        <a href="consolidate.html">
                             <i class="now-ui-icons travel_info"></i>
                             <p>Consolidating vs. Merging</p>
                         </a>
@@ -102,13 +102,62 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="title">Consolidating vs. Merging</h5>
+                                <h5 class="title">Scene Parameters</h5>
                             </div>
                             <div class="card-body">
-                              <p>Each time a user adds a polyline or a face to mesh via the user interface, he/she needs to press the consolidate button in order to integrate it permanently into the mesh.</p>
-                              <p>User needs to press on the merge button before subdividing or offsetting a mesh. The merge button links all the faces, vertices, and edges together from the mesh.</p>
+                              <h3>Single-Line Comment</h3>
+                              <h6>NOME Definition</h6>
+                              <p>The user can enter the # character to add a line comment. When the parser encounters the # symbol, the characters on the same line after the symbol will be ignored.</p>
+                              <p><code># Any ASCII characters on the same line after pound sign ignored</code></p>
+                              <h6>Example</h6>
+                              <p><code># This is a comment</code></p>
+                              
+                              <h3>Multi-Line Comment</h3>
+                              <h6>NOME Definition</h6>
+                              <p>The user can enter the (* *) characters to add a multi-line comment. When the parser encounters the (* symbol it ignores every character until *). Nested comments are allowed.</p>
+                              <p><code>(* Any ASCII characters on 
+the different 
+lines are ignores *)</code></p>
+                              <h6>Example</h6>
+                              <p><code>(* This
+is 
+a comment *)</code></p>
+
+<h3>delete</h3>
+<h6>NOME Definition</h6>
+<p>Deletes a face from a geometric construct.</p>
+<p><code>delete
+	face 	face_id1 endface
+	...
+	face 	face_idN endface
+enddelete</code></p>
+<p>Each of the face_id must have already been created in order to delete them. </p>
+<h6>Example</h6>
+<p><code>delete
+	face cube1_c4 endface
+	face cube1_c2 endface
+	face cube1_c3 endface
+enddelete</code></p>
+<p>This method will delete the faces cube1_c4, cube1_c2, and cube1_c3.</p>
+
+                              <h3>Subdivision</h3>
+                              <h6>NOME Definition</h6>
+                              <p>A subidision statement is used to subdivide a mesh.</p>
+                              <p><code>subdivision id  type SLF_CATMULL_CLARK  subdivisions subdivVal  endsubdivision</code></p>
+                              <p>The subdivVal represents the maximum number of subdivisions for the slider</p>
+                              <h6>Example</h6>
+                              <p><code>subdivision subdiv  type SLF_CATMULL_CLARK  subdivisions 5  endsubdivision</code></p>
+                              <p>Defines a subdivision slider that has a maximum of 5 subdivisions.</p>
+
+                              <h3>Offset</h3>
+                              <h6>NOME Definition</h6>
+                              <p>An offset statement is used to offset a mesh once it has been merged.</p>
+                              <p><code>offset id min minVal max maxVal step stepVal endoffset</code></p>
+                              <p>The minVal represents the minimum value of the slider. The maxVal represents the maximum and the step represents the different in value between two slider values.</p>
+                              <h6>Example</h6>
+                              <p><code>offset of min 0.0 max 0.4 step 0.02 endoffset</code></p>
+                              <p>Defines an offset slider with minimum 0, step 0.02, and maximum of 0.4.</p>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -118,19 +167,19 @@
     </div>
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
-<script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/now-ui-dashboard.js?v=1.0.1"></script>
+<script src="assets/js/now-ui-dashboard.js?v=1.0.1"></script>
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
+<script src="assets/demo/demo.js"></script>
 
 </html>

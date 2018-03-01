@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>NOME Language Specification</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="orange">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+            
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="index.html">
+                            <i class="now-ui-icons files_paper"></i>
+                            <p>Introduction</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="basic_geometry.html">
+                            <i class="now-ui-icons design_app"></i>
+                            <p>Basic Geometry</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="banks.html">
+                            <i class="now-ui-icons design_bullet-list-67"></i>
+                            <p>Banks and Sets</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="spline.html">
+                            <i class="now-ui-icons education_atom"></i>
+                            <p>Spline Nodes</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="meshInstances.html">
+                            <i class="now-ui-icons design_vector"></i>
+                            <p>Mesh and Instances</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mesh.html">
+                            <i class="now-ui-icons design-2_ruler-pencil"></i>
+                            <p>Mesh Generator</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="scene.html">
+                            <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                            <p>Scene parameters</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="consolidate.html">
+                            <i class="now-ui-icons travel_info"></i>
+                            <p>Consolidating vs. Merging</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#pablo">NOME Language Specification</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-sm">
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">Spline Nodes</h5>
+                                <h3>BSpline</h3>
+                                <h6>NOME Definition</h6>
+                                <p>A bspline statement is used to define a curve that approximates a list of control points. </p>
+                                <p><code>bspline{order} id ( point_idlist ) closed endbspline{order} </code></p>
+                                <p>The point_idlist defines a list of control points. The closed parameter defines whether or not a curve is closed.</p>
+                                <h6>Example</h6>
+                                <p><code>bspline3 bsp  (p0 p1 p2 p3 p4 p5 p6) endbspline3</code></p>
+                                <p>Defines a bspline bsp with order 3 and with control points p0, p1, p2, p3, p4, p5, and p6.</p>
+                                
+                                <h3>Bezier Curve</h3>
+                                <h6>NOME Definition</h6>
+                                <p>A bezier curve statement is used to define a curve that interpolates the end points and approximates the rest of the points from a list of control points. </p>
+                                <p><code>beziercurve id ( point_idlist ) slices numSlices endbeziercurve</code></p>
+                                <p>The point_idlist defines a list of control points. The numSlices parameter defines the number of slices in the bezier curve.</p>
+                                <h6>Example</h6>
+                                <p><code>beziercurve bz  (p0 p1 p2 p3 p4 p5 p6) slices 10 endbeziercurve</code></p>
+                                <p>Defines a bezier curve bz with 10 slices and with control points p0, p1, p2, p3, p4, p5, and p6.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="assets/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/now-ui-dashboard.js?v=1.0.1"></script>
+<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="assets/demo/demo.js"></script>
+
+</html>

@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>NOME Language Specification</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -12,10 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <link href="assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -28,49 +28,49 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a href="../docs/index.html">
+                        <a href="index.html">
                             <i class="now-ui-icons files_paper"></i>
                             <p>Introduction</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="../docs/basic_geometry.html">
+                    <li class="active">
+                        <a href="basic_geometry.html">
                             <i class="now-ui-icons design_app"></i>
                             <p>Basic Geometry</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/banks.html">
+                        <a href="banks.html">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Banks and Sets</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/spline.html">
+                        <a href="spline.html">
                             <i class="now-ui-icons education_atom"></i>
                             <p>Spline Nodes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/meshInstances.html">
+                        <a href="meshInstances.html">
                             <i class="now-ui-icons design_vector"></i>
                             <p>Mesh and Instances</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/mesh.html">
+                        <a href="mesh.html">
                             <i class="now-ui-icons design-2_ruler-pencil"></i>
                             <p>Mesh Generator</p>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="../docs/scene.html">
+                    <li>
+                        <a href="scene.html">
                             <i class="now-ui-icons ui-1_settings-gear-63"></i>
                             <p>Scene parameters</p>
                         </a>
                     </li>
                     <li>
-                        <a href="../docs/consolidate.html">
+                        <a href="consolidate.html">
                             <i class="now-ui-icons travel_info"></i>
                             <p>Consolidating vs. Merging</p>
                         </a>
@@ -102,61 +102,44 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="title">Scene Parameters</h5>
+                                <h5 class="title">Basic Geometry</h5>
                             </div>
                             <div class="card-body">
-                              <h3>Single-Line Comment</h3>
+                              <h3>Surface</h3>
                               <h6>NOME Definition</h6>
-                              <p>The user can enter the # character to add a line comment. When the parser encounters the # symbol, the characters on the same line after the symbol will be ignored.</p>
-                              <p><code># Any ASCII characters on the same line after pound sign ignored</code></p>
+                              <p>A surface statement is used to define the material of an object which can then be referenced by its id. </p>
+                              <p><code> surface id color ( color_triple ) endsurface </code></p>
+                              <p>The point_triple defines the RGB color of the surface. The values of each of the three coordinate must be separated by spaces and between 0 and 1.</p>
                               <h6>Example</h6>
-                              <p><code># This is a comment</code></p>
+                              <p><code>surface sBlue color (0 0 1) endsurface</code></p>
+                              <p>Defines a surface named sBlue with a blue color.</p>
                               
-                              <h3>Multi-Line Comment</h3>
+                              <h3>Point / Control Point</h3>
                               <h6>NOME Definition</h6>
-                              <p>The user can enter the (* *) characters to add a multi-line comment. When the parser encounters the (* symbol it ignores every character until *). Nested comments are allowed.</p>
-                              <p><code>(* Any ASCII characters on 
-the different 
-lines are ignores *)</code></p>
+                              <p>A point statement is used to define a point in 3D space which can then be referenced by its id. </p>
+                              <p><code> point id ( point_triple ) endpoint</code></p>
+                              <p>The point_triple defines the 3D position of the point. The values of each of the three coordinate must be separated by spaces.</p>
                               <h6>Example</h6>
-                              <p><code>(* This
-is 
-a comment *)</code></p>
-
-<h3>delete</h3>
-<h6>NOME Definition</h6>
-<p>Deletes a face from a geometric construct.</p>
-<p><code>delete
-	face 	face_id1 endface
-	...
-	face 	face_idN endface
-enddelete</code></p>
-<p>Each of the face_id must have already been created in order to delete them. </p>
-<h6>Example</h6>
-<p><code>delete
-	face cube1_c4 endface
-	face cube1_c2 endface
-	face cube1_c3 endface
-enddelete</code></p>
-<p>This method will delete the faces cube1_c4, cube1_c2, and cube1_c3.</p>
-
-                              <h3>Subdivision</h3>
+                              <p><code>point p1 (0 0 1) endpoint</code></p>
+                              <p>Defines a point named p1 which lies 1 unit from the origin along the z-axis..</p>
+                        
+                              <h3>Face</h3>
                               <h6>NOME Definition</h6>
-                              <p>A subidision statement is used to subdivide a mesh.</p>
-                              <p><code>subdivision id  type SLF_CATMULL_CLARK  subdivisions subdivVal  endsubdivision</code></p>
-                              <p>The subdivVal represents the maximum number of subdivisions for the slider</p>
+                              <p>A face statement is used to define a planar convex polygon which can then be referenced by its id. A face is defined by a list of points that enumerates the vertices of the face in counterclockwise or clockwise order around the face contour. </p>
+                              <p><code> face id ( point_idlist ) [surface surface_id] endface </code></p>
+                              <p>The point_idlist is a list of points id. The values of each of the points id must be separated by spaces. The surface_id is an optional parameter that is needed only if the face must inherit the properties of a surface.</p>
                               <h6>Example</h6>
-                              <p><code>subdivision subdiv  type SLF_CATMULL_CLARK  subdivisions 5  endsubdivision</code></p>
-                              <p>Defines a subdivision slider that has a maximum of 5 subdivisions.</p>
-
-                              <h3>Offset</h3>
+                              <p><code>face triFace (p1 p2 p3) surface sBlue endface  </code></p>
+                              <p>Defines a face named triangleFace with vertices p1, p2, and p3, inheriting the properties of the surface sBlue.</p>
+                              
+                              <h3>Polyline</h3>
                               <h6>NOME Definition</h6>
-                              <p>An offset statement is used to offset a mesh once it has been merged.</p>
-                              <p><code>offset id min minVal max maxVal step stepVal endoffset</code></p>
-                              <p>The minVal represents the minimum value of the slider. The maxVal represents the maximum and the step represents the different in value between two slider values.</p>
+                              <p>A polyline statement generates 3D piecewise linear segments.</p>
+                              <p><code> polyline id (point_idlist) [closed] endpolyline </code></p>
+                              <p>The point_idlist is a list of control points. The list of points must be of length at least 2.</p>
                               <h6>Example</h6>
-                              <p><code>offset of min 0.0 max 0.4 step 0.02 endoffset</code></p>
-                              <p>Defines an offset slider with minimum 0, step 0.02, and maximum of 0.4.</p>
+                              <p><code>polyline rim (v1 v2 v3 v4 v5 v6 v7 v8) endpolyline  </code></p>
+                              <p>Defines a polyline with id rim and control points v1, v2, v3, v4, v5, v6, v7, and v8..</p>
                             </div>
                         </div>
                     </div>
@@ -167,19 +150,19 @@ enddelete</code></p>
     </div>
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
-<script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/now-ui-dashboard.js?v=1.0.1"></script>
+<script src="assets/js/now-ui-dashboard.js?v=1.0.1"></script>
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
+<script src="assets/demo/demo.js"></script>
 
 </html>
