@@ -147,13 +147,13 @@ enddelete</code></p>
                               <p>The subdivVal represents the maximum number of subdivisions for the slider</p>
                               <h6>Example</h6>
                               <p><code>subdivision subdiv  type SLF_CATMULL_CLARK  subdivisions 5  endsubdivision</code></p>
-                              <p>Defines a subdivision slider that has a maximum of 5 subdivisions.</p>
+                              <p>Defines a subdivision slider that has a maximum of 5 subdivisions. The type can be changed to WEIGHTED_FACEPOINT_SLF_CATMULL_CLARK instead of SLF_CATMULL_CLARK to have the weight of the vertices around a face would be set by the length of the edges attached to them.</p>
 
                               <h3>Offset</h3>
                               <h6>NOME Definition</h6>
                               <p>An offset statement is used to offset a mesh once it has been merged.</p>
                               <p><code>offset id type REGULAR min minVal max maxVal step stepVal endoffset</code></p>
-                              <p>The minVal represents the minimum value of the slider. The maxVal represents the maximum and the step represents the different in value between two slider values. The type can be changed to WEIGHTED instead of REGULAR to have normal vectors that are weighted according to the size of the outgoing edges of the vertex.</p>
+                              <p>The minVal represents the minimum value of the slider. The maxVal represents the maximum and the step represents the different in value between two slider values. The type can be changed to WEIGHTED instead of REGULAR to use the average face normal for the normal of vertices.</p>
                               <h6>Example</h6>
                               <p><code>offset of min 0.0 max 0.4 step 0.02 endoffset</code></p>
                               <p>Defines an offset slider with minimum 0, step 0.02, and maximum of 0.4.</p>
