@@ -106,10 +106,10 @@
                                 <h3>BSpline</h3>
                                 <h6>NOME Definition</h6>
                                 <p>A bspline statement is used to define a curve that approximates a list of control points. </p>
-                                <p><code>bspline{order} id ( point_idlist ) closed endbspline{order} </code></p>
-                                <p>The point_idlist defines a list of control points. The closed parameter defines whether or not a curve is closed.</p>
+                                <p><code>bspline{order} id ( point_idlist ) closed slices numSlices endbspline{order} </code></p>
+                                <p>The point_idlist defines a list of control points. The numSlices parameter defines the number of slices in the bspline curve. The closed parameter defines whether or not a curve is closed.</p>
                                 <h6>Example</h6>
-                                <p><code>bspline3 bsp  (p0 p1 p2 p3 p4 p5 p6) endbspline3</code></p>
+                                <p><code>bspline3 bsp  (p0 p1 p2 p3 p4 p5 p6) slices 10 endbspline3</code></p>
                                 <p>Defines a bspline bsp with order 3 and with control points p0, p1, p2, p3, p4, p5, and p6.</p>
                                 
                                 <h3>Bezier Curve</h3>
